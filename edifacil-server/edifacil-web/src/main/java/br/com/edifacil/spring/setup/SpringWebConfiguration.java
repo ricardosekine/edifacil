@@ -1,4 +1,4 @@
-package br.com.ichei.spring.setup;
+package br.com.edifacil.spring.setup;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 

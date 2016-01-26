@@ -1,4 +1,4 @@
-package br.com.ichei.spring.setup;
+package br.com.edifacil.spring.setup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

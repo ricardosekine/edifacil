@@ -1,4 +1,4 @@
-package br.com.ichei.service;
+package br.com.edifacil.service;
 
 import org.springframework.stereotype.Service;
 

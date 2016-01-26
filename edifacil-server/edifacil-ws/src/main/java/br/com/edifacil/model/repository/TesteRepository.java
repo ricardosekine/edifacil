@@ -1,4 +1,4 @@
-package br.com.ichei.model.repository;
+package br.com.edifacil.model.repository;
 
 import org.springframework.stereotype.Repository;
 

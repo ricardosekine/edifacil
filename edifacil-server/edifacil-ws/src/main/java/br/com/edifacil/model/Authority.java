@@ -1,4 +1,4 @@
-package br.com.ichei.model;
+package br.com.edifacil.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

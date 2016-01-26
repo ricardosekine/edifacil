@@ -1,4 +1,4 @@
-package br.com.ichei.controller;
+package br.com.edifacil.controller;
 
 public class TesteRestController {
 
