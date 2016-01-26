@@ -8,8 +8,7 @@
   <description>edifacil - porque sem édificil</description>
   
   <modules>
-  	<module>edifacil-ws</module>
-  	<module>edifacil-web</module>
+  	<module>edifacil-server</module>
   </modules>
   
 </project>
