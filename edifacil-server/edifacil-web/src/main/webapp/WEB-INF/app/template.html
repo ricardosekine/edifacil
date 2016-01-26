@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+	  
+<head>
+	<meta charset="utf-8" />
+  	<title>iChei</title>
+  	<link rel="stylesheet" type="text/css" media="all" href="../../resources/css/style.css" th:href="@{/resources/css/style.css}" />
+</head>
+  
+<body>
+
+	<div id="main">
+	
+		<div th:include="header :: defaultHeader"></div>
+		
+		<div layout:fragment="body"></div>
+		
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>br.com.edifacil</groupId>
+    <artifactId>edifacil-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>br.com.edifacil</groupId>
+  <artifactId>edifacil-ws</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>edifacil-WS</name>
+  <description>edifacil WS - service package</description>
+</project>
