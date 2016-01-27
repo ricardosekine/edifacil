@@ -21,7 +21,7 @@
 		<!-- edifacil Service Dependency -->
 		<dependency>
 			<groupId>br.com.edifacil</groupId>
-			<artifactId>edifacil-ws</artifactId>
+			<artifactId>edifacil-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		

@@ -1,15 +1,52 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <parent>
-    <groupId>br.com.edifacil</groupId>
-    <artifactId>edifacil-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  
-  <groupId>br.com.edifacil</groupId>
-  <artifactId>edifacil-ws</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>edifacil-WS</name>
-  <description>edifacil WS - service package</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>br.com.edifacil</groupId>
+		<artifactId>edifacil-server</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>br.com.edifacil</groupId>
+	<artifactId>edifacil-ws</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	
+	<name>edifacil-WS</name>
+	<description>edifacil WS - WS package</description>
+	
+	<dependencies>
+		
+		<!-- edifacil Service Dependency -->
+		<dependency>
+			<groupId>br.com.edifacil</groupId>
+			<artifactId>edifacil-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- Servlet Dependency -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Spring web dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Apache Commons FileUpload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		
+	</dependencies>
+	
 </project>

@@ -17,8 +17,9 @@
 	<description>edifacil Server Parent</description>
 	
 	<modules>
-		<module>edifacil-ws</module>
+		<module>edifacil-service</module>
 		<module>edifacil-web</module>
+		<module>edifacil-ws</module>
 	</modules>
 	
 	<properties>
