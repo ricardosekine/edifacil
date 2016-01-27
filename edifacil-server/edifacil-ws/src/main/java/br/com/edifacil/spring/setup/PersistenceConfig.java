@@ -28,9 +28,9 @@ public class PersistenceConfig {
 	public DataSource dataSource(){
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost:3306/iChei");
-	    dataSource.setUsername("expressMatch");
-	    dataSource.setPassword("expressMatch");
+	    dataSource.setUrl("jdbc:mysql://localhost:3306/nomeDoBanco");
+	    dataSource.setUsername("username");
+	    dataSource.setPassword("password");
 	    
 	    return dataSource;
 	}
@@ -51,7 +51,7 @@ public class PersistenceConfig {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 
 		entityManagerFactoryBean.setDataSource(this.dataSource());
-		entityManagerFactoryBean.setPackagesToScan("br.com.ichei.model");
+		entityManagerFactoryBean.setPackagesToScan("br.com.edifacil.model");
 		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 
 		Properties jpaProterties = new Properties();
