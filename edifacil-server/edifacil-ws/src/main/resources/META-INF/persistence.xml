@@ -5,7 +5,7 @@
         version="2.0">
     
     
-    <persistence-unit name="iChei">
+    <persistence-unit name="edifacil">
     
     </persistence-unit>
     
