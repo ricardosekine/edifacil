@@ -9,20 +9,20 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`authority` (
+CREATE TABLE IF NOT EXISTS `authority` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `authority_to_user_fk`
     FOREIGN KEY (`id`)
-    REFERENCES `edifacil`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`booking` (
+CREATE TABLE IF NOT EXISTS `booking` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
   `booking_type_id` INT(11) NOT NULL,
@@ -34,25 +34,25 @@ CREATE TABLE IF NOT EXISTS `edifacil`.`booking` (
   INDEX `booking_to_booking_type_idx` (`booking_type_id` ASC),
   CONSTRAINT `booking_to_booking_type`
     FOREIGN KEY (`booking_type_id`)
-    REFERENCES `edifacil`.`booking_type` (`id`)
+    REFERENCES `booking_type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `booking_to_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `edifacil`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`booking_type` (
+CREATE TABLE IF NOT EXISTS `booking_type` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`occurrence` (
+CREATE TABLE IF NOT EXISTS `occurrence` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_id` INT(11) NOT NULL,
   `occurrence_type_id` INT(11) NOT NULL,
@@ -64,25 +64,25 @@ CREATE TABLE IF NOT EXISTS `edifacil`.`occurrence` (
   INDEX `occurrence_to_occurrence_type_fk_idx` (`occurrence_type_id` ASC),
   CONSTRAINT `occurrence_to_occurrence_type_fk`
     FOREIGN KEY (`occurrence_type_id`)
-    REFERENCES `edifacil`.`occurrence_type` (`id`)
+    REFERENCES `occurrence_type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `occurrence_to_user_fk`
     FOREIGN KEY (`user_id`)
-    REFERENCES `edifacil`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`occurrence_type` (
+CREATE TABLE IF NOT EXISTS `occurrence_type` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `edifacil`.`user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
