@@ -6,7 +6,7 @@
 						http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<!-- Context Path -->
-	<display-name>iChei</display-name>
+	<display-name>edifacil</display-name>
 
 	<context-param>
 		<param-name>contextClass</param-name>
@@ -18,10 +18,9 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-          		br.com.ichei.spring.setup.WebSecurityConfig,
-          		br.com.ichei.spring.setup.PersistenceConfig,
-          		br.com.ichei.spring.setup.CoreConfig,
-          		br.com.ichei.spring.setup.SpringWebConfiguration
+          		br.com.edifacil.spring.setup.PersistenceConfig,
+          		br.com.edifacil.spring.setup.CoreConfig,
+          		br.com.edifacil.spring.setup.SpringWebConfiguration
           	</param-value>
 	</context-param>
 
@@ -40,6 +39,7 @@
 		</init-param>
 	</servlet>
 
+<!-- USO DE SEGURANÇA DESATIVADO
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -49,7 +49,8 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+ -->
+ 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>

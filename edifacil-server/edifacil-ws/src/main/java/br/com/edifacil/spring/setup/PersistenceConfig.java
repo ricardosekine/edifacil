@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("br.com.ichei.model.repository")
+@EnableJpaRepositories("br.com.edifacil.model.repository")
 public class PersistenceConfig {
 	
 	/** logger. */
