@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
-@Configuration
-@EnableWebMvcSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+//@Configuration
+//@EnableWebMvcSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

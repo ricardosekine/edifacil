@@ -21,9 +21,9 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-@EnableWebMvc
-@Configuration
-@ComponentScan(basePackages = "br.com.ichei")
+//@EnableWebMvc
+//@Configuration
+//@ComponentScan(basePackages = "br.com.ichei")
 public class SpringWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	/** logger. */

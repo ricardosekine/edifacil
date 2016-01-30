@@ -28,9 +28,9 @@ public class PersistenceConfig {
 	public DataSource dataSource(){
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost:3306/nomeDoBanco");
-	    dataSource.setUsername("username");
-	    dataSource.setPassword("password");
+	    dataSource.setUrl("jdbc:mysql://localhost:3306/edifacil");
+	    dataSource.setUsername("root");
+	    dataSource.setPassword("admin");
 	    
 	    return dataSource;
 	}

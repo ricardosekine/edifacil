@@ -1,114 +1,107 @@
 package br.com.edifacil.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * The persistent class for the user database table.
- * 
+ * @author Ricardo
+ *
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-
-	private Boolean enabled;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="insert_date")
-	private Date insertDate;
-
+	
 	private String name;
-
-	@Lob
+	
 	private String password;
 
-	//bi-directional many-to-one association to Authority
-	@OneToMany(mappedBy="user")
-	private Set<Authority> authorities;
-
-	//bi-directional one-to-one association to UserInfo
-	@OneToOne(mappedBy="user")
-	private UserInfo userInfo;
-
-	public User() {
-	}
-
+	/**
+	 * @return the id
+	 */
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Boolean getEnabled() {
-		return this.enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public Date getInsertDate() {
-		return this.insertDate;
-	}
-
-	public void setInsertDate(Date insertDate) {
-		this.insertDate = insertDate;
-	}
-
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
+	/**
+	 * @param password the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public Set<Authority> getAuthorities() {
-		return this.authorities;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		return result;
 	}
 
-	public void setAuthorities(Set<Authority> authorities) {
-		this.authorities = authorities;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		return true;
 	}
-
-	public Authority addAuthority(Authority authority) {
-		getAuthorities().add(authority);
-		authority.setUser(this);
-
-		return authority;
-	}
-
-	public Authority removeAuthority(Authority authority) {
-		getAuthorities().remove(authority);
-		authority.setUser(null);
-
-		return authority;
-	}
-
-	public UserInfo getUserInfo() {
-		return this.userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
-
 }

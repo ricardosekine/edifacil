@@ -16,9 +16,9 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories("br.com.ichei.model.repository")
+//@Configuration
+//@EnableTransactionManagement
+//@EnableJpaRepositories("br.com.ichei.model.repository")
 public class PersistenceConfig {
 	
 	/** logger. */
