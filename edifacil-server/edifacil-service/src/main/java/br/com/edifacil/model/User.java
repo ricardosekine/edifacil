@@ -6,25 +6,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Ricardo
+ * The Class User.
  *
+ * @author Ricardo
  */
 @Entity
 public class User {
 
+	/** The id. */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	/** The user name. */
 	private String name;
 	
+	/** The password. */
 	private String password;
 	
+	/** The is logged. */
 	@Transient
 	private boolean isLogged;
+	
+	/** The message. */
+	@Transient
+	private String message;
 
 	/**
+	 * Gets the id.
+	 *
 	 * @return the id
 	 */
 	public Long getId() {
@@ -32,6 +44,8 @@ public class User {
 	}
 
 	/**
+	 * Sets the id.
+	 *
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
@@ -39,6 +53,8 @@ public class User {
 	}
 
 	/**
+	 * Gets the user name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -46,13 +62,17 @@ public class User {
 	}
 
 	/**
-	 * @param name the name to set
+	 * Sets the user name.
+	 *
+	 * @param userName the new user name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
+	 * Gets the password.
+	 *
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -60,6 +80,8 @@ public class User {
 	}
 
 	/**
+	 * Sets the password.
+	 *
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
@@ -67,20 +89,41 @@ public class User {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the checks if is logged.
+	 *
+	 * @return the checks if is logged
 	 */
 	public boolean getIsLogged() {
 		return isLogged;
 	}
 	
 	/**
-	 * 
-	 * @param isLogged
+	 * Sets the logged.
+	 *
+	 * @param isLogged the new logged
 	 */
 	public void setLogged(boolean isLogged) {
 		this.isLogged = isLogged;
 	}
+	
+	/**
+	 * Gets the message.
+	 *
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * Sets the message.
+	 *
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
