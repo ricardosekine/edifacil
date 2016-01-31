@@ -1,30 +1,29 @@
 package br.com.edifacil.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.edifacil.model.User;
+import br.com.edifacil.service.UserService;
 
 @RestController
 public class UserRestController {
-
-	private static final String name = "ricardo.sekine";
-	private static final String password = "ri9013";
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/user")
 	public User teste(){
-		User user = new User();
-		user.setId(1l);
-		user.setName("Ricardo Sekine");
-		user.setPassword("ri9013");
+		User user = userService.findByName("ricardo");
 		return user;
 	}
 	
 	@RequestMapping("/login")
-	public boolean login(){
-		boolean res = false;
+	public User login(){
 		
-		return res;
+		
+		return null;
 	}
 	
 }

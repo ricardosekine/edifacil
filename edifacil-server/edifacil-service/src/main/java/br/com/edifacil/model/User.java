@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * @author Ricardo
@@ -19,6 +20,9 @@ public class User {
 	private String name;
 	
 	private String password;
+	
+	@Transient
+	private boolean isLogged;
 
 	/**
 	 * @return the id
@@ -62,6 +66,22 @@ public class User {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean getIsLogged() {
+		return isLogged;
+	}
+	
+	/**
+	 * 
+	 * @param isLogged
+	 */
+	public void setLogged(boolean isLogged) {
+		this.isLogged = isLogged;
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -104,4 +124,5 @@ public class User {
 			return false;
 		return true;
 	}
+
 }
