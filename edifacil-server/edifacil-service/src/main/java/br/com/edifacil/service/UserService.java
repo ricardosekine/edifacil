@@ -40,7 +40,6 @@ public class UserService {
 				
 			}else{
 				user.setLogged(true);
-				user.setId(null);
 				user.setPassword(null);
 				user.setMessage("Usuário é registrado");
 			}
