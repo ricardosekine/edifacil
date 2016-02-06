@@ -1,28 +1,28 @@
 package br.com.edifacil.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import java.io.Serializable;
+import javax.persistence.*;
 
-// TODO: Auto-generated Javadoc
+
 /**
- * The Class User.
- *
- * @author Ricardo
+ * The persistent class for the user database table.
+ * 
  */
 @Entity
-public class User {
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 	/** The id. */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	/** The user name. */
+
+	/** The name. */
 	private String name;
-	
+
 	/** The password. */
 	private String password;
 	
@@ -35,36 +35,42 @@ public class User {
 	private String message;
 
 	/**
+	 * Instantiates a new user.
+	 */
+	public User() {
+	}
+
+	/**
 	 * Gets the id.
 	 *
 	 * @return the id
 	 */
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	/**
 	 * Sets the id.
 	 *
-	 * @param id the id to set
+	 * @param id the new id
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * Gets the user name.
+	 * Gets the name.
 	 *
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	/**
-	 * Sets the user name.
+	 * Sets the name.
 	 *
-	 * @param userName the new user name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -76,36 +82,36 @@ public class User {
 	 * @return the password
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	/**
 	 * Sets the password.
 	 *
-	 * @param password the password to set
+	 * @param password the new password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * Gets the checks if is logged.
+	 * Checks if is logged.
 	 *
-	 * @return the checks if is logged
+	 * @return the isLogged
 	 */
-	public boolean getIsLogged() {
+	public boolean isLogged() {
 		return isLogged;
 	}
-	
+
 	/**
 	 * Sets the logged.
 	 *
-	 * @param isLogged the new logged
+	 * @param isLogged the isLogged to set
 	 */
 	public void setLogged(boolean isLogged) {
 		this.isLogged = isLogged;
 	}
-	
+
 	/**
 	 * Gets the message.
 	 *
@@ -122,50 +128,6 @@ public class User {
 	 */
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		return true;
 	}
 
 }
