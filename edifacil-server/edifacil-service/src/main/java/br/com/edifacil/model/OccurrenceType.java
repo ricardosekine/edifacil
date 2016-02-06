@@ -1,8 +1,13 @@
 package br.com.edifacil.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
@@ -21,10 +26,6 @@ public class OccurrenceType implements Serializable {
 
 	private String name;
 
-	//bi-directional many-to-one association to Occurrence
-	@OneToMany(mappedBy="occurrenceType")
-	private List<Occurrence> occurrences;
-
 	public OccurrenceType() {
 	}
 
@@ -42,28 +43,6 @@ public class OccurrenceType implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Occurrence> getOccurrences() {
-		return this.occurrences;
-	}
-
-	public void setOccurrences(List<Occurrence> occurrences) {
-		this.occurrences = occurrences;
-	}
-
-	public Occurrence addOccurrence(Occurrence occurrence) {
-		getOccurrences().add(occurrence);
-		occurrence.setOccurrenceType(this);
-
-		return occurrence;
-	}
-
-	public Occurrence removeOccurrence(Occurrence occurrence) {
-		getOccurrences().remove(occurrence);
-		occurrence.setOccurrenceType(null);
-
-		return occurrence;
 	}
 
 }
