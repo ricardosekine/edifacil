@@ -86,6 +86,9 @@ public class OccurrencesService {
 				occurrence.setUser(user);
 				
 				occurrenceRepository.save(occurrence);
+				
+				returnVO.setMessage("Ocorrência cadastrada com sucesso!");
+				returnVO.setSuccess(true);
 			}
 
 		} catch (EdifacilException e) {
