@@ -18,6 +18,6 @@ public interface OccurrenceRepository extends CrudRepository<Occurrence, Long> {
 	 * @param user the user
 	 * @return the occurrence
 	 */
-	//public List<Occurrence> listByUser(User user);
+	public List<Occurrence> findByUser(User user);
 	
 }

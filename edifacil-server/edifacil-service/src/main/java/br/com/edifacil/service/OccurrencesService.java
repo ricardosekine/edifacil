@@ -116,8 +116,11 @@ public class OccurrencesService {
 			}
 			
 			User user = userRepository.findOne(userId);
-//			List<Occurrence> occurrences = occurrenceRepository.listByUser(user);
-//			listReturnVO.setReturnList(occurrences);
+			List<Occurrence> occurrences = occurrenceRepository.findByUser(user);
+			for (Occurrence occurrence : occurrences) {
+				occurrence.setUser(null);
+			}
+			listReturnVO.setReturnList(occurrences);
 			
 		} catch(EdifacilException e){
 			listReturnVO.setMessage(e.getMessage());
