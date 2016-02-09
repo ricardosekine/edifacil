@@ -1,8 +1,12 @@
 package br.com.edifacil.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
@@ -11,7 +15,6 @@ import java.util.List;
  */
 @Entity
 @Table(name="booking_type")
-@NamedQuery(name="BookingType.findAll", query="SELECT b FROM BookingType b")
 public class BookingType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,10 +23,6 @@ public class BookingType implements Serializable {
 	private Long id;
 
 	private String name;
-
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="bookingType")
-	private List<Booking> bookings;
 
 	public BookingType() {
 	}
@@ -42,28 +41,6 @@ public class BookingType implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Booking> getBookings() {
-		return this.bookings;
-	}
-
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
-	}
-
-	public Booking addBooking(Booking booking) {
-		getBookings().add(booking);
-		booking.setBookingType(this);
-
-		return booking;
-	}
-
-	public Booking removeBooking(Booking booking) {
-		getBookings().remove(booking);
-		booking.setBookingType(null);
-
-		return booking;
 	}
 
 }
