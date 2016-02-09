@@ -54,8 +54,18 @@ public class OccurrencesRestController {
 	 * @param userId the user id
 	 * @return the list return vo
 	 */
-	@RequestMapping("listOccurrencesByUser")
+	@RequestMapping("/listOccurrencesByUser")
 	public ListReturnVO<Occurrence> listOccurrencesByUser(@RequestParam(value="userId") Long userId){
-		return occurrencesService.find(userId);
+		return occurrencesService.findOccurrencesByUser(userId);
+	}
+	
+	/**
+	 * List all occurrences.
+	 *
+	 * @return the list
+	 */
+	@RequestMapping("/listAllOccurrences")
+	public List<Occurrence> listAllOccurrences(){
+		return occurrencesService.listAllOccurrences();
 	}
 }

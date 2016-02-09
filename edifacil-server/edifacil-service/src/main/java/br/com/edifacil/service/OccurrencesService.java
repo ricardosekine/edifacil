@@ -47,6 +47,20 @@ public class OccurrencesService {
 	}
 	
 	/**
+	 * List all occurrences.
+	 *
+	 * @return the list
+	 */
+	public List<Occurrence> listAllOccurrences(){
+		List<Occurrence> occurrences = new ArrayList<>();
+		occurrences = (List<Occurrence>) occurrenceRepository.findAll();
+		for (Occurrence occurrence : occurrences) {
+			occurrence.setUser(null);
+		}
+		return occurrences;
+	}
+	
+	/**
 	 * Save.
 	 *
 	 * @param description the description
@@ -103,9 +117,8 @@ public class OccurrencesService {
 	 *
 	 * @param userId the user id
 	 * @return the list
-	 * @throws EdifacilException the edifacil exception
 	 */
-	public ListReturnVO<Occurrence> find(final Long userId){
+	public ListReturnVO<Occurrence> findOccurrencesByUser(final Long userId){
 		
 		ListReturnVO<Occurrence> listReturnVO = new ListReturnVO<>();
 		
@@ -128,5 +141,30 @@ public class OccurrencesService {
 			listReturnVO.setMessage("Erro ao executar a requisição, por favor tente mais tarde.");
 		}
 		return listReturnVO;
+	}
+	
+	
+	/**
+	 * Update status.
+	 *
+	 * @param occurenceId the occurence id
+	 * @param status the status
+	 * @return the crud return vo
+	 */
+	public CrudReturnVO updateStatus(Long occurenceId, String status){
+		
+		CrudReturnVO returnVO = new CrudReturnVO();
+		returnVO.setSuccess(false);
+		
+		try {
+			
+			Occurrence occurrenceToUpdate = occurrenceRepository.findOne(occurenceId);
+			occurrenceToUpdate.setStatus(status);
+			occurrenceRepository.save(occurrenceToUpdate);
+						
+		} catch (Exception e) {
+			returnVO.setMessage("Erro ao executar a requisição, por favor tente mais tarde.");
+		}
+		return returnVO;
 	}
 }
