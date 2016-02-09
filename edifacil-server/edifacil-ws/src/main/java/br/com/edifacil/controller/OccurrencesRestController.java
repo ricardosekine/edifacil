@@ -77,7 +77,7 @@ public class OccurrencesRestController {
 	 * @return the crud return vo
 	 */
 	@RequestMapping("/updateOccurrenceStatus")
-	public CrudReturnVO updateOccurrenceStatus(@RequestParam(value="occurenceId") Long occurrenceId, @RequestParam(value="status") String status){
+	public CrudReturnVO updateOccurrenceStatus(@RequestParam(value="occurrenceId") Long occurrenceId, @RequestParam(value="status") String status){
 		return occurrencesService.updateStatus(occurrenceId, status);
 	}
 }

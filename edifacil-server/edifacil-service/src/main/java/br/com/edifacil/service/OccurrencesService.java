@@ -158,11 +158,19 @@ public class OccurrencesService {
 		
 		try {
 			
+			if(null==status || status.isEmpty()){
+				throw new EdifacilException("Favor preencher o status");
+			}
+			
 			Occurrence occurrenceToUpdate = occurrenceRepository.findOne(occurenceId);
 			occurrenceToUpdate.setStatus(status);
 			occurrenceRepository.save(occurrenceToUpdate);
+			returnVO.setMessage("Status da ocorrência atualizado com sucesso para: " + status);
+			returnVO.setSuccess(true);
 						
-		} catch (Exception e) {
+		} catch(EdifacilException e){
+			returnVO.setMessage(e.getMessage());
+		}catch (Exception e) {
 			returnVO.setMessage("Erro ao executar a requisição, por favor tente mais tarde.");
 		}
 		return returnVO;
