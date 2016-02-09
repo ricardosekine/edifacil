@@ -1,5 +1,7 @@
 package br.com.edifacil.model.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import br.com.edifacil.model.Occurrence;
@@ -16,6 +18,6 @@ public interface OccurrenceRepository extends CrudRepository<Occurrence, Long> {
 	 * @param user the user
 	 * @return the occurrence
 	 */
-	public Occurrence findByUser(User user);
+	//public List<Occurrence> listByUser(User user);
 	
 }

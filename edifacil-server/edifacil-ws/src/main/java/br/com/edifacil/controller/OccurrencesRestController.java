@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.edifacil.model.OccurrenceType;
 import br.com.edifacil.service.OccurrencesService;
-import br.com.edifacil.vo.ReturnVO;
+import br.com.edifacil.vo.CrudReturnVO;
 
 /**
  * The Class OccurrencesRestController.
@@ -32,7 +32,7 @@ public class OccurrencesRestController {
 	}
 	
 	@RequestMapping("/saveOccurrence")
-	public ReturnVO saveOccurrence(@RequestParam(value="description") String description, 
+	public CrudReturnVO saveOccurrence(@RequestParam(value="description") String description, 
 								   @RequestParam(value="occurrenceTypeId") Long occurrenceTypeId,
 								   @RequestParam(value="userId") Long userId){
 		return occurrencesService.save(description, occurrenceTypeId, userId);

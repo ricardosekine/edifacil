@@ -14,7 +14,8 @@ import br.com.edifacil.model.User;
 import br.com.edifacil.model.repository.OccurrenceRepository;
 import br.com.edifacil.model.repository.OccurrenceTypeRepository;
 import br.com.edifacil.model.repository.UserRepository;
-import br.com.edifacil.vo.ReturnVO;
+import br.com.edifacil.vo.CrudReturnVO;
+import br.com.edifacil.vo.ListReturnVO;
 
 /**
  * The Class OccurrencesService.
@@ -50,11 +51,12 @@ public class OccurrencesService {
 	 *
 	 * @param description the description
 	 * @param occurrenceTypeId the occurrence type id
-	 * @param userName the user name
+	 * @param userId the user id
+	 * @return the return vo
 	 */
-	public ReturnVO save(String description, Long occurrenceTypeId, Long userId){
+	public CrudReturnVO save(String description, Long occurrenceTypeId, Long userId){
 		
-		ReturnVO returnVO = new ReturnVO();
+		CrudReturnVO returnVO = new CrudReturnVO();
 		returnVO.setSuccess(false);
 		
 		try {
@@ -63,33 +65,29 @@ public class OccurrencesService {
 				throw new EdifacilException("Favor preencher a descrição");
 			}
 			
-			else if (null==occurrenceTypeId) {
+			if (null==occurrenceTypeId) {
 				throw new EdifacilException("Tipo de ocorrência inválido");
 			}
 			
-			else if(null==userId){
+			if(null==userId){
 				throw new EdifacilException("Usuário inválido");
 			}
 			
-			else{
-				
-				Occurrence occurrence = new Occurrence();
-				occurrence.setCreationDate(new Date());
-				occurrence.setDescription(description);
-				occurrence.setStatus("Em aberto");
-				
-				OccurrenceType occurrenceType = occurrenceTypeRepository.findOne(occurrenceTypeId);
-				occurrence.setOccurrenceType(occurrenceType);
-				
-				User user = userRepository.findOne(userId);
-				user.setId(1l);
-				occurrence.setUser(user);
-				
-				occurrenceRepository.save(occurrence);
-				
-				returnVO.setMessage("Ocorrência cadastrada com sucesso!");
-				returnVO.setSuccess(true);
-			}
+			Occurrence occurrence = new Occurrence();
+			occurrence.setCreationDate(new Date());
+			occurrence.setDescription(description);
+			occurrence.setStatus("Em aberto");
+			
+			OccurrenceType occurrenceType = occurrenceTypeRepository.findOne(occurrenceTypeId);
+			occurrence.setOccurrenceType(occurrenceType);
+			
+			User user = userRepository.findOne(userId);
+			occurrence.setUser(user);
+			
+			occurrenceRepository.save(occurrence);
+			
+			returnVO.setMessage("Ocorrência cadastrada com sucesso!");
+			returnVO.setSuccess(true);
 
 		} catch (EdifacilException e) {
 			returnVO.setMessage(e.getMessage());
@@ -97,5 +95,35 @@ public class OccurrencesService {
 			returnVO.setMessage("Erro ao executar a requisição, por favor tente mais tarde.");
 		}
 		return returnVO;
+	}
+	
+	
+	/**
+	 * Find.
+	 *
+	 * @param userId the user id
+	 * @return the list
+	 * @throws EdifacilException the edifacil exception
+	 */
+	public ListReturnVO<Occurrence> find(final Long userId){
+		
+		ListReturnVO<Occurrence> listReturnVO = new ListReturnVO<>();
+		
+		try {
+			
+			if(null==userId){
+				throw new EdifacilException("Usuário inválido");
+			}
+			
+			User user = userRepository.findOne(userId);
+//			List<Occurrence> occurrences = occurrenceRepository.listByUser(user);
+//			listReturnVO.setReturnList(occurrences);
+			
+		} catch(EdifacilException e){
+			listReturnVO.setMessage(e.getMessage());
+		} catch (Exception e) {
+			listReturnVO.setMessage("Erro ao executar a requisição, por favor tente mais tarde.");
+		}
+		return listReturnVO;
 	}
 }

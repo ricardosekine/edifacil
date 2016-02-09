@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * The Class ReturnVO.
  */
-public class ReturnVO implements Serializable {
+public class CrudReturnVO implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
