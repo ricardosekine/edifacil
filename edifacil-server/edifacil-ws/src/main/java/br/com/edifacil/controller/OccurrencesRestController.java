@@ -68,4 +68,16 @@ public class OccurrencesRestController {
 	public List<Occurrence> listAllOccurrences(){
 		return occurrencesService.listAllOccurrences();
 	}
+	
+	/**
+	 * Update occurrence status.
+	 *
+	 * @param occurrenceId the occurrence id
+	 * @param status the status
+	 * @return the crud return vo
+	 */
+	@RequestMapping("/updateOccurrenceStatus")
+	public CrudReturnVO updateOccurrenceStatus(@RequestParam(value="occurenceId") Long occurrenceId, @RequestParam(value="status") String status){
+		return occurrencesService.updateStatus(occurrenceId, status);
+	}
 }
