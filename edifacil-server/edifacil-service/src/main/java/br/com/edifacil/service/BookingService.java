@@ -1,8 +1,8 @@
 package br.com.edifacil.service;
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import br.com.edifacil.exception.EdifacilException;
 import br.com.edifacil.model.Booking;
 import br.com.edifacil.model.BookingType;
-import br.com.edifacil.model.Occurrence;
 import br.com.edifacil.model.User;
 import br.com.edifacil.model.repository.BookingRepository;
 import br.com.edifacil.model.repository.BookingTypeRepository;
@@ -150,6 +149,9 @@ public class BookingService {
 			
 			Date start = (Date) new SimpleDateFormat(datePattern).parse(startDate);
 			List<Booking> bookinList =  bookingRepository.findByStartDate(start);
+			for (Booking booking : bookinList) {
+				booking.setUser(null);
+			}
 			listReturnVO.setReturnList(bookinList);
 			
 		}

@@ -43,5 +43,10 @@ public class BookingRestController {
 	public ListReturnVO<Booking> cancelBooking(@RequestParam(value="startDate") String startDate){
 		return bookingService.findBookingByDate(startDate);
 	}
+	
+	@RequestMapping("/bookingLimitTime")
+	public Integer bookingLimitTime(){
+		return 30;
+	}
 
 }
