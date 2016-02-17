@@ -42,10 +42,11 @@ public class OccurrencesRestController {
 	 * @return the crud return vo
 	 */
 	@RequestMapping("/saveOccurrence")
-	public CrudReturnVO saveOccurrence(@RequestParam(value="description") String description, 
-								   @RequestParam(value="occurrenceTypeId") Long occurrenceTypeId,
-								   @RequestParam(value="userId") Long userId){
-		return occurrencesService.save(description, occurrenceTypeId, userId);
+	public CrudReturnVO saveOccurrence(@RequestParam(value="title") String title,
+									   @RequestParam(value="description") String description, 
+								   	   @RequestParam(value="occurrenceTypeId") Long occurrenceTypeId,
+								   	   @RequestParam(value="userId") Long userId){
+		return occurrencesService.save(title, description, occurrenceTypeId, userId);
 	}
 	
 	/**

@@ -68,12 +68,16 @@ public class OccurrencesService {
 	 * @param userId the user id
 	 * @return the return vo
 	 */
-	public CrudReturnVO save(String description, Long occurrenceTypeId, Long userId){
+	public CrudReturnVO save(String title, String description, Long occurrenceTypeId, Long userId){
 		
 		CrudReturnVO returnVO = new CrudReturnVO();
 		returnVO.setSuccess(false);
 		
 		try {
+			
+			if(null==title || title.isEmpty()){
+				throw new EdifacilException("Favor preencher o título");
+			}
 			
 			if(null==description || description.isEmpty()){
 				throw new EdifacilException("Favor preencher a descrição");
@@ -89,6 +93,7 @@ public class OccurrencesService {
 			
 			Occurrence occurrence = new Occurrence();
 			occurrence.setCreationDate(new Date());
+			occurrence.setTitle(title);
 			occurrence.setDescription(description);
 			occurrence.setStatus("Em aberto");
 			

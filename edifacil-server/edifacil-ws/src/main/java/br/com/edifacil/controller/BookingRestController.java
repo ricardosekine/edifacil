@@ -28,10 +28,10 @@ public class BookingRestController {
 
 	@RequestMapping("/saveBooking")
 	public CrudReturnVO saveBooking(@RequestParam(value="userId") Long userId, 
-			   @RequestParam(value="bookingTypeId") Long bookingTypeId,
-			   @RequestParam(value="startDate") String startDate,
-			   @RequestParam(value="endDate") String endDate){
-		return bookingService.save(userId, bookingTypeId, startDate, endDate);
+			   						@RequestParam(value="bookingTypeId") Long bookingTypeId,
+			   						@RequestParam(value="date") String date,
+			   						@RequestParam(value="hour") String hour){
+		return bookingService.save(userId, bookingTypeId, date, hour);
 	}
 	
 	@RequestMapping("/cancelBooking")
@@ -39,9 +39,14 @@ public class BookingRestController {
 		return bookingService.delete(bookingId);
 	}
 	
-	@RequestMapping("/listBookingByStartDate")
-	public ListReturnVO<Booking> cancelBooking(@RequestParam(value="startDate") String startDate){
-		return bookingService.findBookingByDate(startDate);
+	@RequestMapping("/listBookingByDate")
+	public ListReturnVO<Booking> listBookingByDate(@RequestParam(value="date") String date){
+		return bookingService.findBookingByDate(date);
+	}
+	
+	@RequestMapping("/listBookingByDateAndBookingType")
+	public ListReturnVO<String> listBookingByDateAndBookingType(@RequestParam(value="date") String date, @RequestParam(value="bookingTypeId") Long bookingTypeId){
+		return bookingService.listBookingByDateAndBookingType(date, bookingTypeId);
 	}
 	
 	@RequestMapping("/bookingLimitTime")
