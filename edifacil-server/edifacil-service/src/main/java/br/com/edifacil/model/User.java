@@ -27,7 +27,7 @@ public class User implements Serializable {
 	
 	/** The is logged. */
 	@Transient
-	private boolean isLogged;
+	private Boolean isLogged;
 	
 	/** The message. */
 	@Transient
@@ -98,7 +98,7 @@ public class User implements Serializable {
 	 *
 	 * @return the isLogged
 	 */
-	public boolean isLogged() {
+	public Boolean isLogged() {
 		return isLogged;
 	}
 
@@ -107,7 +107,7 @@ public class User implements Serializable {
 	 *
 	 * @param isLogged the isLogged to set
 	 */
-	public void setLogged(boolean isLogged) {
+	public void setLogged(Boolean isLogged) {
 		this.isLogged = isLogged;
 	}
 

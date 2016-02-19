@@ -45,7 +45,7 @@ public class BookingRestController {
 	}
 	
 	@RequestMapping("/listBookingByDateAndBookingType")
-	public ListReturnVO<String> listBookingByDateAndBookingType(@RequestParam(value="date") String date, @RequestParam(value="bookingTypeId") Long bookingTypeId){
+	public ListReturnVO<Booking> listBookingByDateAndBookingType(@RequestParam(value="date") String date, @RequestParam(value="bookingTypeId") Long bookingTypeId){
 		return bookingService.listBookingByDateAndBookingType(date, bookingTypeId);
 	}
 	

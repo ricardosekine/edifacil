@@ -168,11 +168,9 @@ public class BookingService {
 			}
 			
 			Date start = (Date) new SimpleDateFormat(DATE_PATTERN).parse(date);
-			List<Booking> bookinList =  bookingRepository.findByDate(start);
-			for (Booking booking : bookinList) {
-				booking.setUser(null);
-			}
-			listReturnVO.setReturnList(bookinList);
+			List<Booking> bookingList =  bookingRepository.findByDate(start);
+			hideUserFields(bookingList);
+			listReturnVO.setReturnList(bookingList);
 			
 		}
 		catch(EdifacilException e){
@@ -191,9 +189,9 @@ public class BookingService {
 	 * @param bookingTypeId the booking type id
 	 * @return the list return vo
 	 */
-	public ListReturnVO<String> listBookingByDateAndBookingType(String date, Long bookingTypeId)
+	public ListReturnVO<Booking> listBookingByDateAndBookingType(String date, Long bookingTypeId)
 	{
-		ListReturnVO<String> listReturnVO = new ListReturnVO<>();
+		ListReturnVO<Booking> listReturnVO = new ListReturnVO<>();
 		
 		try {
 			
@@ -209,15 +207,10 @@ public class BookingService {
 			
 			Date bookingDate = (Date) new SimpleDateFormat(DATE_PATTERN).parse(date);
 			BookingType bookingType = bookingTypeRepository.findOne(bookingTypeId);
+			List<Booking> bookingList =  bookingRepository.findByDateAndBookingType(bookingDate, bookingType);
 			
-			List<Booking> bookinList =  bookingRepository.findByDateAndBookingType(bookingDate, bookingType);
-			List<String> hours = new ArrayList<>();
-			
-			for (Booking booking : bookinList) {
-				hours.add(booking.getHour());
-			}
-			
-			listReturnVO.setReturnList(hours);
+			hideUserFields(bookingList);
+			listReturnVO.setReturnList(bookingList);
 		}
 		catch(EdifacilException e){
 			listReturnVO.setMessage(e.getMessage());
@@ -226,6 +219,19 @@ public class BookingService {
 		}
 		return listReturnVO;
 		
+	}
+
+	/**
+	 * Hide user fields.
+	 *
+	 * @param bookingList the booking list
+	 */
+	private void hideUserFields(List<Booking> bookingList) {
+		for (Booking booking : bookingList) {
+			booking.getUser().setName(null);
+			booking.getUser().setPassword(null);
+			booking.getUser().setLogged(null);
+		}
 	}
 	
 	/**
